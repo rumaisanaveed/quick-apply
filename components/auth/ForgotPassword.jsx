@@ -1,3 +1,4 @@
+"use client";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -10,8 +11,19 @@ import {
   CardTitle,
 } from "../ui/card";
 import { cn } from "@/lib/utils";
+import { useForm } from "react-hook-form";
+import { validationRules } from "@/lib/validationRules";
+import ShowError from "../ui/error";
 
 export default function ForgotPasswordForm({ className, ...props }) {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const handleResetPassword = (data) => console.log(data);
+
   return (
     <div className={cn("flex flex-col gap-12", className)} {...props}>
       <Card className="p-4">
@@ -23,16 +35,17 @@ export default function ForgotPasswordForm({ className, ...props }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit(handleResetPassword)}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3 py-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
-                  type="email"
+                  type="text"
                   placeholder="m@example.com"
-                  required
+                  {...register("email", validationRules.email)}
                 />
+                {errors.email && <ShowError message={errors.email.message} />}
               </div>
               <Button type="submit" className="w-full mb-3">
                 Reset Password

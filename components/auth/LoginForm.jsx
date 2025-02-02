@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,8 +11,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import ShowError from "../ui/error";
+import { validationRules } from "@/lib/validationRules";
 
 export function LoginForm({ className, ...props }) {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const handleSubmitLogin = (data) => console.log(data);
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -22,16 +34,17 @@ export function LoginForm({ className, ...props }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit(handleSubmitLogin)}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
-                  type="email"
+                  type="text"
                   placeholder="m@example.com"
-                  required
+                  {...register("email", validationRules.email)}
                 />
+                {errors.email && <ShowError message={errors.email.message} />}
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
@@ -43,7 +56,14 @@ export function LoginForm({ className, ...props }) {
                     Forgot your password?
                   </Link>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  id="password"
+                  type="text"
+                  {...register("password", validationRules.password)}
+                />
+                {errors.password && (
+                  <ShowError message={errors.password.message} />
+                )}
               </div>
               <Button type="submit" className="w-full">
                 Login
