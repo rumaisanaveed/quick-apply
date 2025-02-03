@@ -1,3 +1,9 @@
+import ProtectServerComponents from "@/components/protect-routes/ProtectServerComponents";
+
 export default function Home() {
-  return <h1>Home Page</h1>;
+  return (
+    <ProtectServerComponents>
+      <h1>Dashboard Page</h1>
+    </ProtectServerComponents>
+  );
 }

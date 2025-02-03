@@ -25,8 +25,11 @@ export default function ForgotPasswordForm({ className, ...props }) {
   const handleResetPassword = (data) => console.log(data);
 
   return (
-    <div className={cn("flex flex-col gap-12", className)} {...props}>
-      <Card className="p-4">
+    <div
+      className={cn("flex flex-col gap-12 max-w-sm mx-auto w-full", className)}
+      {...props}
+    >
+      <Card className="md:p-4">
         <CardHeader>
           <CardTitle className="text-2xl">Forgot your password?</CardTitle>
           <CardDescription>
