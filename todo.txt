@@ -1,0 +1,1 @@
+change the local urls to the domain urls when deploying 
