@@ -2,22 +2,23 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Progress } from "../ui/progress";
 
 export default function ProtectAuthRoutes({ children }) {
-  const session = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (session?.status === "authenticated") {
+    if (status === "authenticated") {
       router.push("/");
-    } else {
+    } else if (status === "unauthenticated") {
       setIsLoading(false);
     }
-  }, [session, router]);
+  }, [status, router]);
 
   if (isLoading) {
-    return null;
+    return <Progress value={33} className="w-[60%]" />;
   }
 
   return <>{children}</>;

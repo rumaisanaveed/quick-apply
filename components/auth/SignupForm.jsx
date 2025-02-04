@@ -108,9 +108,6 @@ export function SignupForm({ className, ...props }) {
                 <Button type="submit" className="w-full" disabled={registering}>
                   Signup
                 </Button>
-                <Button variant="outline" className="w-full">
-                  Continue with Google
-                </Button>
               </div>
               <div className="mt-4 text-center text-sm">
                 Already have an account? &nbsp;

@@ -11,9 +11,12 @@ import {
 import { sidebarItems } from "@/constants/data";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { signOut } from "next-auth/react";
 
 export function AppSidebar() {
-  const handleLogoutClick = () => {};
+  const handleLogoutClick = () => {
+    signOut();
+  };
 
   return (
     <Sidebar>
@@ -33,12 +36,12 @@ export function AppSidebar() {
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
-          <Button
+          <button
             onClick={handleLogoutClick}
-            className="flex items-center justify-center w-full text-left p-5 rounded-md transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 "
+            className="flex items-center justify-center w-full text-left py-2 rounded-md text-white bg-black"
           >
-            <p className="py-5">Logout</p>
-          </Button>
+            Logout
+          </button>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>

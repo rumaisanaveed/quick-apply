@@ -55,6 +55,10 @@ export function LoginForm({ className, ...props }) {
     }
   };
 
+  const handleGoogleSignin = () => {
+    signIn("google");
+  };
+
   return (
     <ProtectAuthRoutes>
       <div
@@ -104,11 +108,18 @@ export function LoginForm({ className, ...props }) {
                 <Button type="submit" className="w-full" disabled={isLoading}>
                   Login
                 </Button>
-                <Button variant="outline" className="w-full">
-                  Continue with Google
-                </Button>
               </div>
-              <div className="mt-4 text-center text-sm">
+            </form>
+            <div className="flex flex-col gap-3 mt-3">
+              <p className="text-gray-700 text-center text-sm">Or</p>
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={handleGoogleSignin}
+              >
+                Continue with Google
+              </Button>
+              <div className="text-center text-sm pt-2">
                 Don't have an account? &nbsp;
                 <Link
                   href={`/auth/signup`}
@@ -117,7 +128,7 @@ export function LoginForm({ className, ...props }) {
                   Sign up
                 </Link>
               </div>
-            </form>
+            </div>
           </CardContent>
         </Card>
       </div>

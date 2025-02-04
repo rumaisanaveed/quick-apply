@@ -4,16 +4,18 @@ const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      required: [true, "Please provide a username"],
+      required: false,
     },
     email: {
       type: String,
-      required: [true, "Please provide an email"],
+      required: true,
+      unique: true,
     },
     password: {
       type: String,
       // TODO : update it later to add google authentication
-      required: [true, "Please provide the password"],
+      required: false,
+      unique: true,
     },
   },
   {
