@@ -1,6 +1,7 @@
 import { AuthContextProvider } from "@/contexts/AuthContext";
 import "./globals.css";
 import AuthSessionProvider from "@/components/providers/SessionProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata = {
   title: "Quick Apply",
@@ -13,6 +14,7 @@ export default async function RootLayout({ children }) {
       <body className="min-h-screen w-full bg-gray-50">
         <AuthSessionProvider>
           <AuthContextProvider>
+            <Toaster />
             <div className="flex flex-col min-h-screen">{children}</div>
           </AuthContextProvider>
         </AuthSessionProvider>

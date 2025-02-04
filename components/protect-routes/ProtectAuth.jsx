@@ -2,7 +2,6 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Progress } from "../ui/progress";
 
 export default function ProtectAuthRoutes({ children }) {
   const { status } = useSession();
@@ -18,7 +17,7 @@ export default function ProtectAuthRoutes({ children }) {
   }, [status, router]);
 
   if (isLoading) {
-    return <Progress value={33} className="w-[60%]" />;
+    return <div className="text-xl">Loading...</div>;
   }
 
   return <>{children}</>;

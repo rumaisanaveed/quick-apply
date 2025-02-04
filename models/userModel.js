@@ -16,6 +16,14 @@ const userSchema = new mongoose.Schema(
       // TODO : update it later to add google authentication
       required: false,
     },
+    resetToken: {
+      type: String,
+      required: false,
+    },
+    resetTokenExpiry: {
+      type: Date,
+      required: false,
+    },
   },
   {
     timestamps: true,
