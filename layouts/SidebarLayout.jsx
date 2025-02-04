@@ -7,7 +7,9 @@ export default function SidebarLayout({ children }) {
     <SidebarProvider>
       <AppSidebar />
       <main>
-        <SidebarTrigger />
+        <div className="p-2">
+          <SidebarTrigger />
+        </div>
         {children}
       </main>
     </SidebarProvider>

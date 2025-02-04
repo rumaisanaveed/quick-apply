@@ -1,6 +1,10 @@
 import { LayoutDashboard } from "lucide-react";
+import { Layers } from "lucide-react";
+import { Plus } from "lucide-react";
+import { Heart } from "lucide-react";
+import { CircleHelp } from "lucide-react";
 
-export const sidebarUpperItems = [
+export const sidebarItems = [
   {
     title: "Dashboard",
     url: "/",
@@ -9,27 +13,21 @@ export const sidebarUpperItems = [
   {
     title: "All Templates",
     url: "/all-templates",
-    icon: LayoutDashboard,
+    icon: Layers,
   },
   {
     title: "Create New Template",
     url: "/new-template",
-    icon: LayoutDashboard,
+    icon: Plus,
   },
   {
     title: "Favorite Templates",
     url: "/fav-templates",
-    icon: LayoutDashboard,
+    icon: Heart,
   },
   {
     title: "Help & Support",
     url: "/help-and-support",
-    icon: LayoutDashboard,
+    icon: CircleHelp,
   },
 ];
-
-export const lowerSidebarItems = {
-  title: "Help & Support",
-  url: "/help-and-support",
-  icon: LayoutDashboard,
-};
