@@ -30,7 +30,7 @@ export const AuthContextProvider = ({ children }) => {
   const forgetPassword = async (data) => {
     try {
       const res = await axiosReq("POST", "forget-password", data);
-      console.log(res);
+      // console.log(res);
       if (res.status === 200) {
         return {
           success: true,
@@ -57,7 +57,7 @@ export const AuthContextProvider = ({ children }) => {
   const verifyToken = async (data) => {
     try {
       const res = await axiosReq("POST", "verify-token", data);
-      console.log(res);
+      // console.log(res);
       if (res?.status === 200) {
         return {
           success: true,
@@ -82,12 +82,31 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
+  const resetPassword = async (data) => {
+    try {
+      const res = await axiosReq("POST", "reset-password", data);
+      if (res.status === 200) {
+        return {
+          success: true,
+          error: res.status !== 200 ? res.data || "Something went wrong" : null,
+        };
+      }
+    } catch (error) {
+      console.log(error);
+      return {
+        success: false,
+        error: error?.response?.data || "Something went wrong",
+      };
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
         registerUser,
         forgetPassword,
         verifyToken,
+        resetPassword,
       }}
     >
       {children}

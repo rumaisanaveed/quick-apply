@@ -19,6 +19,7 @@ import { useSession } from "next-auth/react";
 import { AuthContext } from "@/contexts/AuthContext";
 import ShowError from "@/components/ui/error";
 import ProtectAuthRoutes from "@/components/protect-routes/ProtectAuth";
+import { toast } from "@/hooks/use-toast";
 
 export function ResetPasswordForm({ className, ...props }) {
   const { token } = useParams();
@@ -27,8 +28,7 @@ export function ResetPasswordForm({ className, ...props }) {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [isVerified, setIsVerified] = useState(false);
-  const { data: session, status } = useSession();
-  const { verifyToken } = useContext(AuthContext);
+  const { verifyToken, resetPassword } = useContext(AuthContext);
   const {
     register,
     formState: { errors },
@@ -50,16 +50,33 @@ export function ResetPasswordForm({ className, ...props }) {
       } else {
         setUser(response.data.user);
         setIsVerified(true);
+        setError("");
       }
     };
     handleVerifyToken();
   }, [token]);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  const handleResetPassword = async (data) => {
+    const { password } = data;
+    if (password) {
+      setError("");
 
-  const handleResetPassword = async () => {};
+      setIsLoading(true);
+      const response = await resetPassword({
+        password,
+        email: user?.email,
+      });
+
+      if (!response.success) {
+        setError(response.error || "Something went wrong");
+        setIsLoading(false);
+      } else if (response.success) {
+        setIsLoading(false);
+        setError("");
+        router.push("/auth/login");
+      }
+    }
+  };
 
   return (
     <ProtectAuthRoutes>
@@ -80,12 +97,6 @@ export function ResetPasswordForm({ className, ...props }) {
                 <div className="grid gap-2">
                   <div className="flex items-center">
                     <Label htmlFor="password">Password</Label>
-                    <Link
-                      href={`/auth/forgot-password`}
-                      className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                    >
-                      Forgot your password?
-                    </Link>
                   </div>
                   <Input
                     id="password"
@@ -100,7 +111,7 @@ export function ResetPasswordForm({ className, ...props }) {
                 <Button
                   type="submit"
                   className="w-full"
-                  disabled={error.length > 0}
+                  disabled={error.length > 0 || isLoading}
                 >
                   Reset Password
                 </Button>
