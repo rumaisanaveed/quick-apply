@@ -10,16 +10,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { validationRules } from "@/lib/validationRules";
 import { useContext, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { AuthContext } from "@/contexts/AuthContext";
 import ShowError from "@/components/ui/error";
 import ProtectAuthRoutes from "@/components/protect-routes/ProtectAuth";
-import { toast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 export function ResetPasswordForm({ className, ...props }) {
   const { token } = useParams();
@@ -28,6 +26,7 @@ export function ResetPasswordForm({ className, ...props }) {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [isVerified, setIsVerified] = useState(false);
+  const { toast } = useToast();
   const { verifyToken, resetPassword } = useContext(AuthContext);
   const {
     register,
@@ -60,23 +59,34 @@ export function ResetPasswordForm({ className, ...props }) {
     const { password } = data;
     if (password) {
       setError("");
-
       setIsLoading(true);
       const response = await resetPassword({
         password,
         email: user?.email,
       });
-
       if (!response.success) {
         setError(response.error || "Something went wrong");
         setIsLoading(false);
       } else if (response.success) {
         setIsLoading(false);
         setError("");
-        router.push("/auth/login");
+        toast({
+          description: "Password updated successfully!",
+        });
+        setTimeout(() => {
+          router.push("/auth/login");
+        }, 2000);
       }
     }
   };
+
+  if (!isVerified) {
+    return (
+      <div>
+        Your reset link is no longer valid. Try resetting your password again.
+      </div>
+    );
+  }
 
   return (
     <ProtectAuthRoutes>

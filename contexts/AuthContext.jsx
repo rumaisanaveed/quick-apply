@@ -8,16 +8,12 @@ export const AuthContextProvider = ({ children }) => {
   const registerUser = async (data) => {
     try {
       const res = await axiosReq("POST", "signup", data);
-      console.log(res);
+      // console.log(res);
       if (res.status === 201) {
         return {
           success: true,
         };
       }
-      return {
-        success: false,
-        error: res.data?.error || "Something went wrong",
-      };
     } catch (error) {
       console.log(`Error ${error}`);
       return {
@@ -37,15 +33,8 @@ export const AuthContextProvider = ({ children }) => {
           data: res?.data,
         };
       }
-      if (res?.data?.error) {
-        return {
-          success: false,
-          error: res.data?.error || "Something went wrong",
-        };
-      }
-      return { success: true };
     } catch (error) {
-      console.log(error);
+      console.log(`Error forgetting password ${error}`);
       const errorMsg = error?.response?.data || "Internal Server Error";
       return {
         success: false,
@@ -65,15 +54,9 @@ export const AuthContextProvider = ({ children }) => {
           error: null,
         };
       }
-
-      return {
-        success: false,
-        data: null,
-        error: res.data?.error || "Unexpected response from server",
-      };
     } catch (error) {
-      console.log("Token verification failed:", error);
-
+      console.log(`Token verification failed: ${error}`);
+      // console.log(error.response?.data?.error);
       return {
         success: false,
         data: null,
@@ -88,11 +71,11 @@ export const AuthContextProvider = ({ children }) => {
       if (res.status === 200) {
         return {
           success: true,
-          error: res.status !== 200 ? res.data || "Something went wrong" : null,
         };
       }
     } catch (error) {
-      console.log(error);
+      console.log(`Error resetting password ${error}`);
+      // console.log(error.response?.data);
       return {
         success: false,
         error: error?.response?.data || "Something went wrong",

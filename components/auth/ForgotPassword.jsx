@@ -38,13 +38,14 @@ export default function ForgotPasswordForm({ className, ...props }) {
       try {
         setIsLoading(true);
         const response = await forgetPassword(data);
-        console.log(response);
         if (response.success) {
-          router.push("/auth/login");
           toast({
             description:
               response.data || "Verification email sent to your account!",
           });
+          setTimeout(() => {
+            router.push("/auth/login");
+          }, 3000);
         } else {
           setError(response.error);
           setTimeout(() => {
