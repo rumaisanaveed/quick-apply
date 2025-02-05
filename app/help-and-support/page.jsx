@@ -1,9 +1,9 @@
 import SidebarLayout from "@/layouts/SidebarLayout";
 
-export default function FavoriteTemplates() {
+export default function HelpAndSupport() {
   return (
     <SidebarLayout>
-      <h1>Favorite Templates Page</h1>
+      <h1>Help & Support Page</h1>
     </SidebarLayout>
   );
 }

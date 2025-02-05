@@ -1,3 +1,9 @@
+import SidebarLayout from "@/layouts/SidebarLayout";
+
 export default function AllTemplates() {
-  return <h1>All Templates</h1>;
+  return (
+    <SidebarLayout>
+      <h1>All Templates Page</h1>
+    </SidebarLayout>
+  );
 }

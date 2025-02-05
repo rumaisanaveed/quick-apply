@@ -1,1 +1,2 @@
 change the local urls to the domain urls when deploying 
+add the page title on each page

@@ -6,11 +6,11 @@ export default function SidebarLayout({ children }) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
+      <main className="w-full h-screen">
         <div className="p-2">
           <SidebarTrigger />
         </div>
-        {children}
+        <div>{children}</div>
       </main>
     </SidebarProvider>
   );

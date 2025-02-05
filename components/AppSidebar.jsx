@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/sidebar";
 import { sidebarItems } from "@/constants/data";
 import Link from "next/link";
-import { Button } from "./ui/button";
 import { signOut } from "next-auth/react";
 
 export function AppSidebar() {
