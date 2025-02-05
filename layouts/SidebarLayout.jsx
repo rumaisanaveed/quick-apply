@@ -10,7 +10,7 @@ export default function SidebarLayout({ children }) {
         <div className="p-2">
           <SidebarTrigger />
         </div>
-        <div>{children}</div>
+        <>{children}</>
       </main>
     </SidebarProvider>
   );

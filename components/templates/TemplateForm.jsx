@@ -22,6 +22,7 @@ export default function TemplateForm({
 
   return (
     <>
+      {/* TODO : Center this div */}
       <div className="w-full px-8 md:px-0 max-w-sm mx-auto flex flex-col flex-grow gap-10 items-center justify-center">
         <h1 className="text-3xl text-black font-semibold text-center">
           {formHeading}
