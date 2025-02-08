@@ -1,3 +1,5 @@
+import ContactForm from "@/components/ui/custom/contact/ContactForm";
+import { Faqs } from "@/components/ui/custom/Faqs";
 import SidebarLayout from "@/layouts/SidebarLayout";
 
 export const metadata = {
@@ -9,10 +11,11 @@ export const metadata = {
 export default function HelpAndSupport() {
   return (
     <SidebarLayout>
-      <h1>Help & Support Page</h1>
       {/* user guide by showing video */}
-      {/* faqs */}
-      {/* contact me form */}
+      <div className="flex flex-col gap-8 max-w-sm mx-auto">
+        <Faqs />
+        <ContactForm />
+      </div>
     </SidebarLayout>
   );
 }
