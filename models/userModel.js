@@ -13,7 +13,6 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      // TODO : update it later to add google authentication
       required: false,
     },
     resetToken: {
