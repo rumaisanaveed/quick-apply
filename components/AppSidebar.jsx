@@ -18,6 +18,7 @@ export function AppSidebar() {
   };
 
   return (
+    // TODO : Fix the error on mobile screens
     <Sidebar>
       <SidebarContent>
         <SidebarGroup className="flex flex-col items-start justify-between h-full py-10 px-5">

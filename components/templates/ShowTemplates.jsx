@@ -18,9 +18,6 @@ export default function ShowTemplates({
           <Template key={index} />
         ))}
       </div>
-      <p className="text-center font-medium text-xl cursor-pointer">
-        Load More...
-      </p>
     </div>
   );
 }

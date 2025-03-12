@@ -25,7 +25,7 @@ export default function Template() {
                 </div>
               ))}
             </div>
-            <Heart size={20} />
+            <Heart size={20} className="cursor-pointer" />
           </div>
         </div>
       </div>

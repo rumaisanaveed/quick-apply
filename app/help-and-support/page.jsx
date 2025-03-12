@@ -11,9 +11,9 @@ export const metadata = {
 export default function HelpAndSupport() {
   return (
     <SidebarLayout>
-      {/* user guide by showing video */}
-      <div className="flex flex-col gap-8 max-w-sm mx-auto">
-        <Faqs />
+      {/* TODO : user guide by showing video */}
+      <div className="w-full px-10">
+        {/* <Faqs /> */}
         <ContactForm />
       </div>
     </SidebarLayout>

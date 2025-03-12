@@ -8,9 +8,9 @@ import BlackLargeHeading from "./text/Heading";
 
 export function Faqs() {
   return (
-    <>
+    <div className="flex flex-col gap-3 max-w-sm w-full mx-auto">
       <BlackLargeHeading heading="FAQs" />
-      <Accordion type="single" collapsible>
+      <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
           <AccordionContent>
@@ -30,7 +30,49 @@ export function Faqs() {
             Yes. It's animated by default, but you can disable it if you prefer.
           </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
       </Accordion>
-    </>
+    </div>
   );
 }

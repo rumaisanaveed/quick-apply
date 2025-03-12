@@ -14,7 +14,7 @@ export default async function RootLayout({ children }) {
       <body className="min-h-screen w-full bg-gray-50">
         <AuthSessionProvider>
           <AuthContextProvider>
-            <Toaster />
+            <Toaster position="top-center" />
             <div className="flex flex-col min-h-screen">{children}</div>
           </AuthContextProvider>
         </AuthSessionProvider>

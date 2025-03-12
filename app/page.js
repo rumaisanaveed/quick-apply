@@ -10,6 +10,7 @@ export const metadata = {
 export default function Dashboard() {
   return (
     <ProtectServerComponents>
+      {/* TODO : style the dashboard */}
       <SidebarLayout>
         <h1>Dashboard Page</h1>
       </SidebarLayout>
